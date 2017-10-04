@@ -15,6 +15,18 @@ class ProjectHelper:
         time.sleep(3)
         wd.find_element_by_css_selector("input[value='Create New Project']")
 
+    def delete_first_project(self):
+        wd = self.app.wd
+        wd.find_element_by_class_name("row-1").find_element_by_css_selector("td a").click()
+        wd.find_element_by_css_selector("input[value='Delete Project']").click()
+        wd.find_element_by_css_selector("input[value='Delete Project']").click()
+
+    def count(self):
+        wd = self.app.wd
+        if not (wd.current_url.endswith("/manage_proj_page.php")) and len(wd.find_elements_by_class_name("row-category")) > 0:
+            wd.get("http://localhost/mantisbt-1.2.20/manage_proj_page.php")
+        return len(wd.find_elements_by_class_name("row-1").find_elements_by_css_selector("td a"))
+
     def open_project_list(self):
         wd = self.app.wd
         wd.find_element_by_link_text("Manage").click()

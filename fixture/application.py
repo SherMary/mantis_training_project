@@ -2,7 +2,9 @@ from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.project import ProjectHelper
 
+
 class Apllication:
+
 
     def __init__(self, browser, base_url):
         if browser == "firefox":
